@@ -40,7 +40,9 @@
       </div>
     </div>
     <!-- 核心操作区域 -->
-    <div class="content"></div>
+    <div class="content">
+      <mapBox></mapBox>
+    </div>
     <!-- 底部聊天框 -->
     <div class="chart">
       <!-- 聊天框内容页 -->
@@ -57,14 +59,18 @@
       </div>
       <div class="notice_box">
         <span>系统公告</span>
-        <p v-for="x,key in notice" :title="x.msg">{{key+1}}:{{x.msg}}</p>
+        <p v-for="(x,key) in notice" :key="key" :title="x.msg">{{key+1}}:{{x.msg}}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import mapBox from '@/views/map/index.vue'
 export default {
+  components:{
+    mapBox,
+  },
   data() {
     return {
       //系统公告
@@ -82,7 +88,7 @@ export default {
 .mainbox {
   width: 1100px;
   height: 650px;
-  border: 1px solid black;
+  // border: 1px solid black;
   position: absolute;
   top: 0;
   left: 0;
@@ -96,29 +102,29 @@ export default {
   height: 100px;
   left: 0;
   top: 0;
-  border: 1px solid black;
+  // border: 1px solid black;
   text-align: center;
   line-height: 100px;
   cursor: pointer;
 }
 
 .nav {
-  width: 900px;
-  height: 50px;
+  width: 800px;
+  height: 30px;
   left: 200px;
   top: 0;
-  border: 1px solid black;
+  // border: 1px solid black;
+  box-sizing: border-box;
   .nav_box {
-    height: 50px;
+    height: 30px;
     top:0;
     float: right;
     width: 205px;
     position: relative;
     .nav_box_item {
       width: 50px;
-      height: 50px;
       text-align: center;
-      line-height: 50px;
+      line-height: 30px;
       display: inline-block;
       cursor: pointer;
     }
@@ -142,7 +148,7 @@ export default {
   height: 250px;
   top: 100px;
   left: 0;
-  border: 1px solid black;
+  // border: 1px solid black;
   .slider_item_outside,
   .slider_item_center,
   .slider_item_pet,
@@ -157,22 +163,25 @@ export default {
 
 .content {
   left: 200px;
-  width: 900px;
-  height: 300px;
-  top: 50px;
+  width: 800px;
+  height: 320px;
+  top: 30px;
   border: 1px solid black;
+  box-sizing: border-box;
 }
 
 .chart {
-  width: 710px;
+  width: 610px;
   height: 300px;
-  border: 1px solid black;
+  // border: 1px solid black;
+  box-sizing: border-box;
   top: 350px;
   left: 0;
   .chart_message{
     height: 40px;
     width: 100%;
     border:1px solid black;
+    box-sizing: border-box;
     left: 0;
     bottom: 0;
   }
@@ -182,20 +191,22 @@ export default {
     width: 100%;
     height:260px;
     border:1px solid black;
+    box-sizing: border-box;
   }
 }
 
 .notice {
   width: 390px;
   height: 300px;
-  border: 1px solid black;
+  // border: 1px solid black;
+  box-sizing: border-box;
   top: 350px;
-  left: 710px;
+  left: 610px;
   .notice_box{
     width: 290px;
     height:200px;
     margin: 50px;
-    border:1px solid black;
+    // border:1px solid black;
     p{
       width: 240px;
       line-height: 30px;
@@ -214,7 +225,7 @@ export default {
     line-height:30px;
     margin-top:10px;
     margin-left: 50px;
-    border:1px solid black;
+    // border:1px solid black;
     vertical-align: middle; 
     height: 30px;
     label,input{
